@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>Fortuna.canonical</h1>
+    <form action="{{ url_for('home_page') }}" method="post">
+        <button type="submit">Generate</button>
+    </form>
+    <h3>Output: {{ output | safe }}</h3>
+{% endblock %}
