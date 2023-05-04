@@ -1,1 +1,1 @@
-python -m gunicorn app.main:APP
+python -m gunicorn app.main:APP --bind=127.0.0.1:8001
