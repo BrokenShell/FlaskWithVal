@@ -2,3 +2,6 @@ Flask
 Fortuna
 gunicorn
 requests
+python-dotenv
+pymongo[srv]
+python-multipart

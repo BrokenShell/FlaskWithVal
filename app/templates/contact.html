@@ -2,5 +2,16 @@
 
 {% block content %}
     <h1>Contact</h1>
-    <p>{{ version }}</p>
+    <form action="{{ url_for('contact_page') }}" method="post">
+        <label>Full Name
+            <input type="text" name="full_name">
+        </label><br>
+        <label>Age
+            <input type="number" name="age">
+        </label><br>
+        <label>Profession
+            <input type="text" name="profession">
+        </label><br>
+        <button type="submit">Submit</button>
+    </form>
 {% endblock %}
