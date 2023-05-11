@@ -1,5 +1,6 @@
 from Fortuna import canonical
 from flask import Flask, render_template, request
+import pandas as pd
 
 from app.database import Database
 
@@ -14,7 +15,10 @@ def home_page():
 
 @APP.route("/about")
 def about_page():
-    return render_template("about.html", test="Hello, world")
+    users = db.find({})
+    df = pd.DataFrame(users)
+    table = df.to_html(index=False)
+    return render_template("about.html", table=table)
 
 
 @APP.route("/contact", methods=["GET", "POST"])
@@ -27,3 +31,9 @@ def contact_page():
         }
         db.insert(data)
     return render_template("contact.html")
+
+
+@APP.route("/delete/<full_name>", methods=["GET", "DELETE"])
+def delete(full_name: str):
+    db.delete({"full_name": full_name})
+    return "True"
